@@ -3,12 +3,12 @@ Psi = zeros(N,max_level);
 Psi_hat = zeros(N,max_level);
 J_Psi = zeros(max_iter,max_level);
 h = floor(w/L*N);
-mu_s = mu*sqrt(N/L);
-lambda_s = lambda;
-r_s = r;
+mu_s = mu * (2*pi/L)^2*sqrt(N/L);
+lambda_s = lambda/(2*pi/L)^2;
+r_s = r/(2*pi/L)^2;
 for level=1:max_level
     tic
-    [psi, psi_hat, J_psi] = cpw(lambda_s*level^alpha, r_s*level^alpha, mu_s/level^alpha, L, N, h, level, Psi_hat, max_iter);
+    [psi, psi_hat, J_psi] = cpw(lambda_s*level^alpha, r_s*level^alpha, mu_s/level^alpha, N, h, level, Psi_hat, max_iter);
     toc
     Psi(:,level) = psi;
     Psi_hat(:,level) = psi_hat;

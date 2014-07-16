@@ -10,16 +10,16 @@ clear all;
 % mu = mu*s^(2+d/2);
 
 w = 1;
-L = 8*w;
-h = 20;
+L = 10*w;
+h = 100;
 N = h*L/w;
-mu = 1;
+mu = 0.5;
 
-lambda = 1e3/mu; r = 10*lambda;
+lambda = 1e2*sqrt(L)/mu; r = 10*lambda;
 alpha = 0; % mu_k = mu/k^alpha for level-k lambda and r should scale too (in function cpws)!
 max_level = 1;
 
-max_iter = 1000;
+max_iter = 2000;
 
 % opt.L = L;
 % opt.N = N;

@@ -1,4 +1,4 @@
-function [psi, psi_hat, J] = cpw(lambda, r, mu, L, N, h, k, Psi_hat, max_iter)
+function [psi, psi_hat, J] = cpw(lambda, r, mu, N, h, k, Psi_hat, max_iter)
 % Algorithm 1: computation of the k-th CPW
 
 % psi is the k-th BCPW, and psi_hat is the Fourier Transform of psi.
@@ -14,9 +14,6 @@ function [psi, psi_hat, J] = cpw(lambda, r, mu, L, N, h, k, Psi_hat, max_iter)
 % h divides N.
 % [u, u_hat] = fourier_orthogonal(N,h,Psi_hat,k);
 % [u, ~] = sopwbasis(N,h,k); u = ifftshift(u); u_hat = fftshift(fft(u));
-% mu = mu * (2*pi/L)^2*sqrt(N/L);
-% lambda = lambda/(2*pi/L)^2;
-r = r/(2*pi/L)^2;
 u = zeros(N,1);
 u(N/2,1) = 1; u_hat = fftshift(fft(u));
 psi = zeros(N, 1);
@@ -29,7 +26,7 @@ for omega=0:floor(N/(2*h))
 end
 % max_iter=2000; 
 J = zeros(max_iter,1);
-epsilon0=1e-4;
+epsilon0=1e-6;
 for jj=1:max_iter
     if jj==1 
         psi = u;
@@ -40,7 +37,7 @@ for jj=1:max_iter
     psi = real(psi);       
     u = soft_shrink(psi+b, 1/(lambda*mu));
     b = b + psi - u;
-    J(jj,1) = J_psi(L, mu, N, psi, psi_hat);
+    J(jj,1) = J_psi(mu, N, psi, psi_hat);
     if jj>1 && abs(J(jj,1)-J(jj-1,1))/J(jj-1,1)<epsilon0
         break;
     end
