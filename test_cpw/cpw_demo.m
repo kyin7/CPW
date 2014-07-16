@@ -10,16 +10,16 @@ clear all;
 % mu = mu*s^(2+d/2);
 
 w = 1;
-L = 16*w;
-h = 50;
+L = 8*w;
+h = 20;
 N = h*L/w;
-mu = 0.5;
+mu = 1;
 
-lambda = 1e2*sqrt(L)/mu; r = 10*lambda;
+lambda = 1e3/mu; r = 10*lambda;
 alpha = 0; % mu_k = mu/k^alpha for level-k lambda and r should scale too (in function cpws)!
-max_level = 8;
+max_level = 1;
 
-max_iter = 2000;
+max_iter = 1000;
 
 % opt.L = L;
 % opt.N = N;
@@ -31,8 +31,8 @@ max_iter = 2000;
 [Psi, Psi_hat, J_Psi] = cpws(L, w, mu, alpha, lambda, r,  N, max_level, max_iter);
 % plot the result
 % close all
-plot_first_4(Psi, L, w, mu, alpha);
-% plotresult(Psi, Psi_hat, J_Psi, L, w, mu, alpha);
+% plot_first_4(Psi, L, w, mu, alpha);
+plotresult(Psi, Psi_hat, J_Psi, L, w, mu, alpha);
 
 %% scaling formula
 % d = 1; s=0.4;
