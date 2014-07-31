@@ -26,7 +26,7 @@ for omega=0:floor(N/(2*h))
 end
 % max_iter=2000; 
 J = zeros(max_iter,1);
-epsilon0=1e-6;
+epsilon0=1e-4;
 for jj=1:max_iter
     if jj==1 
         psi = u;

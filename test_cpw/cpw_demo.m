@@ -10,7 +10,7 @@ clear all;
 % mu = mu*s^(2+d/2);
 
 w = 1;
-L = 10*w;
+L = 6*w;
 h = 100;
 N = h*L/w;
 mu = 0.5;

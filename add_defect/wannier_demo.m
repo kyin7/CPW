@@ -1,6 +1,6 @@
 function [Psi, Psi_hat, J_Psi, Psi_energy, opt]= wannier_demo
 %% parameters
-n = 10; % number of unit cells in a supercell;
+n = 12; % number of unit cells in a supercell;
 w = 1; L = n*w; 
 h = 200;
 N = h*n;
@@ -21,9 +21,9 @@ V0 = 1e2; % maximum depth of the potential wells
 % gamma = 1e3; % coefficient for L1 minimization
 % lambda = 1e3; % coefficient for shift-orthogonality
 
-mu = 1e3/(V0*sqrt(L));
-gamma = 1e0*V0; % coefficient for L1 minimization
-lambda = 10*V0; % coefficient for shift-orthogonality
+mu = 2e1/(V0);
+gamma = 0.5e0*V0; % coefficient for L1 minimization
+lambda = 5*V0; % coefficient for shift-orthogonality
 
 
 
@@ -33,7 +33,7 @@ max_level = 4;
 opt.L = L;
 opt.N = N;
 opt.w = w;
-opt.h = n*h; %% the size of the shift is multiple of unit cell
+opt.h = h; %% the size of the shift is multiple of unit cell
 opt.G = G;
 opt.mu = mu;
 opt.lambda = lambda;
@@ -92,9 +92,9 @@ opt.V_d = V_d;
 opt.V_d_bar = V_d_bar;
 opt.V_d_tilde = V_d_tilde;
 
-opt.V = V_d;
-opt.V_bar = V_d_bar;
-opt.V_tilde = V_d_tilde;
+% opt.V = V_d;
+% opt.V_bar = V_d_bar;
+% opt.V_tilde = V_d_tilde;
 
 % opt.lambda = 10*sqrt(h)*norm(opt.V_bar);
 % close all

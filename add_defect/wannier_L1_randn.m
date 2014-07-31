@@ -35,7 +35,7 @@ J_min = 0;
 epsilon0=1e-4;
 
 np = 2*n; % try np different initial data in order to get global min
-for ii=1:np
+for ii=1:2
     u = zeros(N,1); u(N/2+(ii-n)*N/n/2,1) = 1;
 %     u = randn(N,1);
 %     u = exp(-(opt.x-opt.L/2).^2) + 1e-2*randn(N,1); 
@@ -87,7 +87,7 @@ for ii=1:np
 %         disp(str);
     end
 end
-J_min = J_min - sum(abs(psi)/opt.mu) * sqrt(opt.L/opt.N);
+% J_min = J_min - sum(abs(psi)/opt.mu) * sqrt(opt.L/opt.N);
 str = ['Level ' num2str(k) ': minimum energy = ' num2str(J_min)];
 disp(str);
 % if k<opt.max_level

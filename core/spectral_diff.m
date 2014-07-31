@@ -5,5 +5,5 @@ if mod(n,2)==1
     k(N/2+1) = 0;
 end
 f1 = fft(f);
-f2 = real(ifft(((1i*2*pi/L*k).^n.*f1))); % f2 = f_prime
+f2 = real(ifft(((1i*2*pi/L*k).^n.*f1))); % f2 = d^n f
 end
